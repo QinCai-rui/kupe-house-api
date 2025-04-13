@@ -1,9 +1,10 @@
 services:
   flask-app:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-    image: kupe-facts-api-flask-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kupe-house-website-api
+    container_name: kupe-house-site-api-server
     ports:
       - "54340:5000"
     environment:
@@ -12,6 +13,7 @@ services:
       - ./app:/app
     networks:
       - flask-network
+    restart: always
 
 networks:
   flask-network:
