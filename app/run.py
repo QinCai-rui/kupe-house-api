@@ -119,7 +119,7 @@ def chat():
         model_response = response_json.get("choices", [{}])[0].get("message", {}).get("content", "No response from model server. Are you rate-limited? ")
         
         # Log the model's response
-        logging.info(f"IP: {client_ip} - Response: {model_response[:100]}..." if len(model_response) > 100 else model_response)
+        logging.info(f"IP: {client_ip} - Response: {model_response[:250]}..." if len(model_response) > 250 else model_response)
         
         return jsonify({"response": model_response})
     except requests.exceptions.RequestException as e:
