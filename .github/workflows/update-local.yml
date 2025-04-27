@@ -3,7 +3,7 @@ name: Update Docker Server
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   update-site:
