@@ -1,0 +1,23 @@
+name: Update Docker Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-site:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Update Docker Site
+        run: |
+          cd ~/docker/kupe-house-api/app
+          sudo git pull
+          cd ..
+          docker compose kill
+          docker compose down
+          docker compose up -d
